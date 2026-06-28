@@ -1,0 +1,23 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Terraform: provider plugins + local state (never commit)
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Terraform: environment values / secrets — commit the .example instead
+*.tfvars
+!*.tfvars.example
+
+# Credentials / secrets
+*.env
+.env
+service-account-*.json
+
+# dbt (used in a later milestone)
+target/
+dbt_packages/
+logs/
