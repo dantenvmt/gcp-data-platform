@@ -44,7 +44,7 @@ dashboard. Every layer is infrastructure-as-code and reproducible from a clean c
 ## Roadmap
 
 - [x] **M1** — Infrastructure as code (Terraform): GCS bucket, BigQuery datasets, service account
-- [ ] **M2** — Ingestion: land a slice of the source data as Parquet in GCS
+- [x] **M2** — Ingestion: land a slice of the source data as Parquet in GCS
 - [ ] **M3** — Big-data compute: PySpark on Dataproc Serverless into BigQuery
 - [ ] **M4** — Transformations: dbt models, tests, and lineage
 - [ ] **M5** — Orchestration: an Airflow DAG running the full pipeline
