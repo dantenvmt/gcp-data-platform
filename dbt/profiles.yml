@@ -1,0 +1,12 @@
+# Connection settings for dbt. Safe to commit: method "oauth" uses your gcloud
+# login (ADC) — there are no passwords or keys in this file.
+taxi_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: project-60776627-9a3f-49ac-9b1
+      dataset: staging
+      location: us-central1
+      threads: 4
