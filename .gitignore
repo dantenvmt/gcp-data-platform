@@ -21,3 +21,8 @@ service-account-*.json
 target/
 dbt_packages/
 logs/
+
+# Airflow — never commit credentials or local logs
+airflow/gcp/
+airflow/logs/
+standalone_admin_password.txt

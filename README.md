@@ -47,7 +47,7 @@ dashboard. Every layer is infrastructure-as-code and reproducible from a clean c
 - [x] **M2** — Ingestion: land a slice of the source data as Parquet in GCS
 - [x] **M3** — Big-data compute: PySpark on Dataproc Serverless into BigQuery
 - [x] **M4** — Transformations: dbt models, tests, and lineage
-- [ ] **M5** — Orchestration: an Airflow DAG running the full pipeline
+- [x] **M5** — Orchestration: an Airflow DAG running the full pipeline
 - [ ] **M6** — CI, dashboard, and writeup
 
 ## Running the infrastructure

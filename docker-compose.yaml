@@ -1,0 +1,19 @@
+# Runs Airflow locally in one container (standalone mode: scheduler + web UI + SQLite).
+# Good for learning/dev; a real deployment would split these into separate services.
+services:
+  airflow:
+    build: ./airflow            # build the image from airflow/Dockerfile
+    image: taxi-airflow:latest
+    container_name: taxi-airflow
+    ports:
+      - "8080:8080"             # Airflow UI at http://localhost:8080
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"   # don't clutter the UI with demo DAGs
+      # GCP auth inside the container: point to the mounted credentials file.
+      GOOGLE_APPLICATION_CREDENTIALS: /opt/airflow/gcp/adc.json
+      GOOGLE_CLOUD_PROJECT: project-60776627-9a3f-49ac-9b1
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags   # your DAG files
+      - ./dbt:/opt/airflow/dbt             # your dbt project (so the dbt task can run it)
+      - ./airflow/gcp:/opt/airflow/gcp:ro  # your GCP credentials (read-only)
+    command: standalone
