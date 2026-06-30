@@ -1,0 +1,38 @@
+name: dbt CI
+
+# Run this workflow automatically on every pull request.
+on:
+  pull_request:
+
+# Permissions this workflow needs.
+permissions:
+  contents: read     # read the repository's code
+  id-token: write    # REQUIRED for keyless auth: lets the job mint a GitHub identity token for WIF
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest        # GitHub runs the job on a fresh Ubuntu machine
+    defaults:
+      run:
+        working-directory: dbt    # run every `run:` command inside the dbt/ folder
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: pip install dbt-bigquery
+
+      - name: Authenticate to Google Cloud (keyless, via WIF)
+        uses: google-github-actions/auth@v2
+        with:
+          project_id: project-60776627-9a3f-49ac-9b1
+          workload_identity_provider: projects/885663096048/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+          service_account: pipeline-runner@project-60776627-9a3f-49ac-9b1.iam.gserviceaccount.com
+
+      - name: Run dbt build + tests
+        run: dbt build --no-partial-parse --project-dir . --profiles-dir .
