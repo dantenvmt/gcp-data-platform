@@ -1,11 +1,10 @@
 # GCP Modern Data Platform
 
 An end-to-end batch data platform on Google Cloud, built to turn a public, billion-row
-dataset (NYC TLC taxi trips, enriched with weather) into an analytics-ready warehouse and
-dashboard. Every layer is infrastructure-as-code and reproducible from a clean clone.
+dataset (NYC TLC taxi trips) into an analytics-ready warehouse and dashboard. Every layer
+is infrastructure-as-code and reproducible from a clean clone.
 
-> **Status:** in progress. Built milestone by milestone as a hands-on study of the modern
-> data stack. See [`docs/`](docs/) for the design spec and implementation plan.
+> **Status:** complete — built milestone by milestone as a hands-on study of the modern data stack.
 
 ## Architecture
 
